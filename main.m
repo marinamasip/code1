@@ -28,6 +28,7 @@ L2 = 10;
 L = L1+L2;
 Me = 2550;
 M = 35000;
+type = input ('Insert a number (0 for DirectSolver, 1 for IterativeSolver)');
 
 % Number of elements for each part
 n_el = [3,6,12,24,48,96];
@@ -130,7 +131,7 @@ for k = 1:length(n_el)
     [vL,vR,uR] = applyCond(n_i,n_dof);
     
     % System resolution
-    [u,R] = solveSys(vL,vR,uR,KG,Fext);
+    [u,R] = solveSys(vL,vR,uR,KG,Fext,type);
     
     % Compute internal distributions
     [pu,pt,Fy,Mz] = computeIntDis(n_el(k),u,Td,x,Tn,Kel,n_ne,n_i);

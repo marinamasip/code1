@@ -9,9 +9,9 @@ for e = 1 : n_el
         I = Td(e,i);
         u_e(i,1) = u(I);
     end
-
+    
    Fint = Kel(:,:,e) * u_e;
-
+   
    Fy(e,1) = -Fint(1); %Shear Force
 
    Fy(e,2) = Fint(3); %Shear Force
@@ -24,12 +24,13 @@ for e = 1 : n_el
    b = (1 / l^3) * [-3*l -2*l^2 3*l -(l)^2] * u_e;
    c = (1 / l^3) * [0 l^3 0 0] * u_e;
    d = (1 / l^3) * [l^3 0 0 0] * u_e;
-   o= 1+l^3;
+   
     pu(e, [1,2,3,4]) = [a, b, c, d];
     pt(e, [1,2,3]) = [3*a, 2*b, c ];
 
     if e==n_el
          uy=a*l^3+b*l^2+c*l+d;
-    end
+    end 
 
 end
+
